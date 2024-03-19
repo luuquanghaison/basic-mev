@@ -1,12 +1,12 @@
 include { crossProduct; collectCSVs; setupPigeons; head; pow; deliverables; checkGitUpdated; commit } from './utils.nf'
-params.dryRun = false
+params.dryRun = true
 
 def variables = [
-    dim: (1..20).collect{0.2*it},
-    seed: (1..20),
+    dim: (1..2).collect{0.2*it},
+    seed: (1..2),
     model: ["funnel_scale"],
     nleaps: [1],// currently not used // (10..30).step(10), // collect{1<<it}, // == 2^it but using bit shift
-    sampler: ["AM","AH_fix", "AH_unif", "AH_exp","NUTS"]
+    sampler: ["AM"] //,"AH_fix", "AH_unif", "AH_exp","NUTS"]
 ]
 
 model_string = [
@@ -21,8 +21,8 @@ sampler_string = [
     NUTS: "Pigeons.MALA()", // ignored, just use it to compile
 ]
 
-n_rounds = params.dryRun ? 4 : 20
-PT_n_chains = 10
+n_rounds = params.dryRun ? 1 : 20
+PT_n_chains = 2
 def julia_env_dir = file("julia-environment")
 def julia_depot_dir = file(".depot")
 def deliv = deliverables(workflow)
