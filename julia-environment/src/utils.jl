@@ -15,13 +15,13 @@ using StanSample
 using StatsPlots
 
 using Pigeons
-try
-    using autoHMC
-catch
-    using Pkg
-    Pkg.instantiate()
-    Pkg.precompile()
-end
+#try
+#    using autoHMC
+#catch
+#    using Pkg
+#    Pkg.instantiate()
+#    Pkg.precompile()
+#end
 
 ###############################################################################
 # ESS and friends
@@ -204,7 +204,7 @@ get_step_size(explorer::Mix) = first(explorer.explorers).step_size
 
 function base_dir()
     base_folder = dirname(dirname(Base.active_project()))
-    endswith(base_folder, "autoHMC-mev") || error("please activate the autoHMC-mev julia-environment")
+    endswith(base_folder, "basic-mev") || error("please activate the autoHMC-mev julia-environment")
     return base_folder
 end
 
