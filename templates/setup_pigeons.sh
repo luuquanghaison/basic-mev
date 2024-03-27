@@ -16,7 +16,7 @@ cat <<EOF > temp.jl
     Pkg.activate("$julia_env")
     Pkg.add([                  # need to install them jointly otherwise complains autoHMC is not reg
         Pkg.PackageSpec(name="Pigeons", rev="main"),
-        Pkg.PackageSpec(url="git@github.com:Julia-Tempering/autoHMC.git", rev="main")
+        Pkg.PackageSpec(url="git@github.com:luuquanghaison/basic-mev.git", rev="main")
     ])
     Pkg.instantiate()
     Pkg.precompile()
